@@ -17,17 +17,10 @@ public class ProxyCommon {
     public void preInit(FMLPreInitializationEvent e) {
         MinecraftForge.EVENT_BUS.register(this);
 
+        GameRegistry.register(RangedPumps.PUMP);
+        GameRegistry.register(new ItemBlockPump());
+
         GameRegistry.registerTileEntity(TilePump.class, RangedPumps.ID + ":pump");
-    }
-
-    @SubscribeEvent
-    public void registerBlocks(RegistryEvent.Register<Block> registry) {
-        registry.getRegistry().register(RangedPumps.PUMP);
-    }
-
-    @SubscribeEvent
-    public void registerItems(RegistryEvent.Register<Item> registry) {
-        registry.getRegistry().register(new ItemBlockPump());
     }
 
     public void init(FMLInitializationEvent e) {

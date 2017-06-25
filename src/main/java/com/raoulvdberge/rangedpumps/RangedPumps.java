@@ -3,6 +3,8 @@ package com.raoulvdberge.rangedpumps;
 import com.raoulvdberge.rangedpumps.block.BlockPump;
 import com.raoulvdberge.rangedpumps.proxy.ProxyCommon;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.Fluid;
@@ -12,6 +14,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = RangedPumps.ID, version = RangedPumps.VERSION)
 public final class RangedPumps {
@@ -63,6 +66,17 @@ public final class RangedPumps {
     @EventHandler
     public void init(FMLInitializationEvent e) {
         PROXY.init(e);
+
+        GameRegistry.addRecipe(new ItemStack(RangedPumps.PUMP),
+                "opo",
+                "ldw",
+                "opo",
+                'o', new ItemStack(Blocks.OBSIDIAN),
+                'p', new ItemStack(Items.IRON_PICKAXE),
+                'l', new ItemStack(Items.LAVA_BUCKET),
+                'w', new ItemStack(Items.WATER_BUCKET),
+                'd', new ItemStack(Blocks.DIAMOND_BLOCK)
+        );
     }
 
     @EventHandler
